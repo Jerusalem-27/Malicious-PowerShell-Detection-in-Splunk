@@ -8,6 +8,62 @@ This project focuses on detecting malicious PowerShell activity in a Splunk envi
 
 By analyzing command-line behavior and process relationships, this project demonstrates how suspicious PowerShell activity can be detected early in a SOC environment before escalation or persistence occurs.
 
+## Investigation Evidence  
+
+### 1. PowerShell Sysmon Log Ingestion  
+![PowerShell Sysmon Log Ingestion](./evidence/01 - PowerShell Sysmon Log Ingestion.png)  
+
+Confirmed that Sysmon PowerShell logs are successfully ingested into Splunk using the correct sourcetype. Verified that events are searchable and contain process and command-line data.
+
+---
+
+### 2. Extracting PowerShell Commands from Raw Logs  
+![Extracting PowerShell Commands](./evidence/02 - Extracting PowerShell Commands from Raw Logs.png)  
+
+Reviewed raw event logs to extract PowerShell command-line activity. Focused on identifying commands executed by `powershell.exe`.
+
+---
+
+### 3. Parent-Child Process Analysis  
+![Parent-Child Process Analysis](./evidence/03 -Parent-Child Process Analysis.png)  
+
+Analyzed parent and child processes to understand how PowerShell was launched. Looked for unusual patterns such as command shells spawning PowerShell.
+
+---
+
+### 4. Execution Policy Bypass Detection  
+![Execution Policy Bypass Detection](./evidence/04 - Execution Policy Bypass Detection.png)  
+
+Identified command-line flags like `-ExecutionPolicy Bypass`, which indicate attempts to run scripts without standard restrictions.
+
+---
+
+### 5. Obfuscated PowerShell Command Analysis  
+![Obfuscated PowerShell Command Analysis](./evidence/05 -Obfuscated PowerShell Command Analysis.png)  
+
+Observed PowerShell commands with unusual or complex patterns that may indicate obfuscation used to hide intent.
+
+---
+
+### 6. Base64 Encoded Payload Detection  
+![Base64 Encoded Payload Detection](./evidence/06 - Base64 Encoded Payload Detection.png)  
+
+Detected usage of encoded commands (e.g., '-EncodedCommand'), which are commonly used to conceal script content.
+
+---
+
+### 7. Correlating Suspicious PowerShell Behaviors  
+![Correlating Suspicious PowerShell Behaviors](./evidence/07 -Correlating Suspicious PowerShell Behaviors.png)  
+
+Combined multiple indicators such as encoded commands, execution policy bypass, and process behavior to identify suspicious activity patterns.
+
+---
+
+### 8. Suspicious PowerShell Activity Alert  
+![Suspicious PowerShell Activity Alert](./evidence/08 -Suspicious PowerShell Activity Alert.png)  
+
+Triggered an alert when multiple suspicious behaviors were detected together, highlighting potential malicious activity.
+
 ---
 
 ## Detection Logic Summary  
