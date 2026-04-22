@@ -73,7 +73,7 @@ Detected encoded commands such as `-EncodedCommand`, commonly used to conceal pa
 ### 7. Correlating Suspicious PowerShell Behaviors  
 
 <p align="center">
- <img src="./evidence/07 -Correlating Suspicious PowerShell Behaviors.png" width="800">
+ <img src="./evidence/07  -Correlating Suspicious PowerShell Behaviors.png" width="800">
 </p>
 
 Combined multiple indicators to identify patterns of suspicious PowerShell activity.
