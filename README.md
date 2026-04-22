@@ -11,58 +11,82 @@ By analyzing command-line behavior and process relationships, this project demon
 ## Investigation Evidence  
 
 ### 1. PowerShell Sysmon Log Ingestion  
-![PowerShell Sysmon Log Ingestion](./evidence/01 - PowerShell Sysmon Log Ingestion.png)  
 
-Confirmed that Sysmon PowerShell logs are successfully ingested into Splunk using the correct sourcetype. Verified that events are searchable and contain process and command-line data.
+<p align="center">
+  <img src="./evidence/01 - PowerShell Sysmon Log Ingestion.png" width="800">
+</p>
+
+Confirmed that Sysmon PowerShell logs are successfully ingested into Splunk and contain process and command-line details.
 
 ---
 
-### 2. Extracting PowerShell Commands from Raw Logs  
-![Extracting PowerShell Commands](./evidence/02 - Extracting PowerShell Commands from Raw Logs.png)  
+### 2. Extracting PowerShell Command-Line Activity  
 
-Reviewed raw event logs to extract PowerShell command-line activity. Focused on identifying commands executed by `powershell.exe`.
+<p align="center">
+  <img src="./evidence/02 - Extracting PowerShell Commands from Raw Logs.png" width="800">
+</p>
+
+Extracted command-line fields from raw events to review PowerShell execution behavior.
 
 ---
 
 ### 3. Parent-Child Process Analysis  
-![Parent-Child Process Analysis](./evidence/03 -Parent-Child Process Analysis.png)  
 
-Analyzed parent and child processes to understand how PowerShell was launched. Looked for unusual patterns such as command shells spawning PowerShell.
+<p align="center">
+  <img src="./evidence/03 -Parent-Child Process Analysis.png" width="800">
+</p>
+
+Analyzed parent-child relationships to identify how PowerShell processes were initiated.
 
 ---
 
 ### 4. Execution Policy Bypass Detection  
-![Execution Policy Bypass Detection](./evidence/04 - Execution Policy Bypass Detection.png)  
 
-Identified command-line flags like `-ExecutionPolicy Bypass`, which indicate attempts to run scripts without standard restrictions.
+<p align="center">
+  <img src="./evidence/04 - Execution Policy Bypass Detection.png" width="800">
+</p>
+
+Identified use of execution policy bypass flags indicating attempts to run restricted scripts.
 
 ---
 
 ### 5. Obfuscated PowerShell Command Analysis  
-![Obfuscated PowerShell Command Analysis](./evidence/05 -Obfuscated PowerShell Command Analysis.png)  
 
-Observed PowerShell commands with unusual or complex patterns that may indicate obfuscation used to hide intent.
+<p align="center">
+  <img src="./evidence/05 -Obfuscated PowerShell Command Analysis.png" width="800">
+</p>
+
+Observed complex or obfuscated command patterns that may be used to hide malicious intent.
 
 ---
 
 ### 6. Base64 Encoded Payload Detection  
-![Base64 Encoded Payload Detection](./evidence/06 - Base64 Encoded Payload Detection.png)  
 
-Detected usage of encoded commands (e.g., '-EncodedCommand'), which are commonly used to conceal script content.
+<p align="center">
+  <img src="./evidence/06 - Base64 Encoded Payload Detection.png" width="800">
+</p>
+
+Detected encoded commands such as `-EncodedCommand`, commonly used to conceal payloads.
 
 ---
 
 ### 7. Correlating Suspicious PowerShell Behaviors  
-![Correlating Suspicious PowerShell Behaviors](./evidence/07 -Correlating Suspicious PowerShell Behaviors.png)  
 
-Combined multiple indicators such as encoded commands, execution policy bypass, and process behavior to identify suspicious activity patterns.
+<p align="center">
+  <img src="./evidence/07 -Correlating Suspicious PowerShell Behaviors.png" width="800">
+</p>
+
+Combined multiple indicators to identify patterns of suspicious PowerShell activity.
 
 ---
 
-### 8. Suspicious PowerShell Activity Alert  
-![Suspicious PowerShell Activity Alert](./evidence/08 -Suspicious PowerShell Activity Alert.png)  
+### 8. Alert Trigger – Suspicious PowerShell Activity  
 
-Triggered an alert when multiple suspicious behaviors were detected together, highlighting potential malicious activity.
+<p align="center">
+  <img src="./evidence/08 -Suspicious PowerShell Activity Alert.png" width="800">
+</p>
+
+Triggered an alert when suspicious behaviors were detected together, indicating potential malicious activity.
 
 ---
 
